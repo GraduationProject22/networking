@@ -1,14 +1,12 @@
 import socket
 import threading
-import tqdm
 
-HEADER = 64
+# Constants
 PORT = 5010
 SERVER = socket.gethostbyname(socket.gethostname())
 BUFFER_SIZE = 4096
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
-DISCONNECT_MESSAGE = "!DISCONNECT"
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
@@ -24,7 +22,6 @@ def handle_client(conn, addr):
 
         if msg:
             filename = msg.split(" ")[0]
-            print(msg.split(" "))
             with open(filename, "wb") as f:
                 while True:
                     # read 1024 bytes from the socket (receive)
@@ -36,11 +33,6 @@ def handle_client(conn, addr):
                     # write to the file the bytes we just received
                     f.write(bytes_read)
                     f.close()
-
-        if msg == DISCONNECT_MESSAGE:
-            connected = False
-        # print(f"[{addr}] {msg}")
-        # conn.send("Msg received".encode(FORMAT))
 
 
 def start():

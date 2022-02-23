@@ -1,7 +1,5 @@
-import files_locator
 import os
 import socket
-import time
 
 HEADER = 64
 PORT = 5010
@@ -37,13 +35,8 @@ def send_file(filename):
             # we use sendall to assure transimission in busy networks
             client.sendall(bytes_read)
         f.close()
-    # # close the socket
-    # client.close()
+    # close the socket
+    client.close()
 
 
 send_file("1.csv")
-time.sleep(2.5)
-send_file("2.csv")
-# files = files_locator.files_locator(".", ".csv")
-# for file in files:
-#     send_file(file)
