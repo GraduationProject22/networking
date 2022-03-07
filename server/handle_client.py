@@ -1,5 +1,6 @@
 import os
 from buffer import Buffer
+from send_files import send_files
 
 BUFFER_SIZE = 4096
 
@@ -7,6 +8,8 @@ BUFFER_SIZE = 4096
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
     connection_buffer = Buffer(conn)
+    send_files(conn, ["server-data.csv"])
+    connection_buffer.put_utf8("Hello from server")
     while True:
         file_name = connection_buffer.get_utf8()
         if not file_name:

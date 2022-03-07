@@ -5,7 +5,7 @@ import threading
 from handle_client import handle_client
 
 # Constants
-PORT = 5050
+PORT = 5010
 SERVER = socket.gethostbyname(socket.gethostname())
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
