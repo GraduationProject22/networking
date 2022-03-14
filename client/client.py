@@ -1,6 +1,7 @@
 import os
 import socket
 from buffer import Buffer
+from send_files import send_files
 
 HEADER = 64
 PORT = 5010
@@ -11,6 +12,8 @@ ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
+send_files(client, ["data.csv"])
+send_files(client, ["server-data.csv"])
 
 client_buffer = Buffer(client)
 

@@ -3,6 +3,7 @@ import os
 import socket
 import threading
 from handle_client import handle_client
+from observable import Observable
 
 # Constants
 PORT = 5010
@@ -20,11 +21,15 @@ except FileExistsError:
 
 
 def start():
+    # print(max(["files/" + file for file in os.listdir("files")],
+    #       key=os.path.getctime))
+    serverObservable = Observable()
     server.listen()
     print(f"[LISTENING] Server is listening on {SERVER}:{PORT}")
     while True:
         conn, addr = server.accept()
-        thread = threading.Thread(target=handle_client, args=(conn, addr))
+        thread = threading.Thread(
+            target=handle_client, args=(conn, addr, serverObservable))
         thread.start()
 
 
