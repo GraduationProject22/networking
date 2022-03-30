@@ -2,8 +2,8 @@ from buffer import Buffer
 import os
 
 
-def send_files(socket, files):
-    client_buffer = Buffer(socket)
+def send_files(client, files):
+    client_buffer = Buffer(client)
     for file in files:
         client_buffer.put_utf8(file)
         file_name = os.path.join('files', file)
