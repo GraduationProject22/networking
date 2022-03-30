@@ -1,20 +1,23 @@
 import os
 from buffer import Buffer
+from send_files import send_files
+# from observer import observer
 
 BUFFER_SIZE = 4096
 
 
-def handle_client(conn, addr):
+def handle_client(conn, addr, serverObservable):
     print(f"[NEW CONNECTION] {addr} connected.")
     connection_buffer = Buffer(conn)
+    serverObservable.subscribe(conn)
     while True:
         file_name = connection_buffer.get_utf8()
         if not file_name:
             break
-        file_name = os.path.join('files', file_name)
+        full_file_name = os.path.join('files', file_name)
         file_size = int(connection_buffer.get_utf8())
 
-        with open(file_name, 'wb') as f:
+        with open(full_file_name, 'wb') as f:
             remaining = file_size
             while remaining:
                 chunk_size = BUFFER_SIZE if remaining >= BUFFER_SIZE else remaining
@@ -28,5 +31,7 @@ def handle_client(conn, addr):
                 print('File incomplete.  Missing', remaining, 'bytes.')
             else:
                 print('File received successfully.')
+        serverObservable.notify(file_name)
+    serverObservable.unsubscribe(conn)
     print('Connection closed.')
     conn.close()
