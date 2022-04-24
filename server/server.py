@@ -2,11 +2,11 @@ from multiprocessing import connection
 import os
 import socket
 import threading
-from handle_client import handle_client
-from observable import Observable
+from utils.handle_client import handle_client
+from utils.observable import Observable
 
 # Constants
-PORT = 5010
+PORT = 5020
 SERVER = socket.gethostbyname(socket.gethostname())
 ADDRESS = (SERVER, PORT)
 FORMAT = 'utf-8'
