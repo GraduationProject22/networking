@@ -1,4 +1,6 @@
-import json
+from utils.generate_json_object_from_fromatted_string import generate_json_object_from_fromatted_string
+
+
 def write_json_file(file_name, formatted_string):
     """
     Writes a formatted string to a json file.
@@ -10,9 +12,6 @@ def write_json_file(file_name, formatted_string):
     formatted_string : str
         The formatted string to write to the file.
     """
-    json_object = {}
-    for item in formatted_string.split("?"):
-        if item[0] == "D":
-            json_object["D"] = item.split(":")[1]
+    json_object = generate_json_object_from_fromatted_string(formatted_string)
     with open(file_name, 'w') as f:
-        f.write(json.dumps(json_object))
+        f.write(json_object)

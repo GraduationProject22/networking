@@ -46,11 +46,12 @@ def uart_handler():
         old_latest_file_edit_time = get_last_edit_time(
             "files/" + old_latest_file)
 
-        receive_from_uart()
+        # TODO Uncomment this line
+        # receive_from_uart()
 
         # ! For testing
         sleep(1)
-        #create_dummy_json_file()
+        create_dummy_json_file()
 
         new_latest_file = get_latest_file('files')
         new_latest_file_edit_time = get_last_edit_time(

@@ -14,6 +14,6 @@ def generate_formatted_string_from_json_string(json_string):
     result_string = ""
 
     for key in json_object:
-        result_string += str(json_object[key]) + ","
+        result_string += key + "=" + str(json_object[key]) + ","
 
-    return result_string[:-1] 
+    return result_string[:-1] + "."
