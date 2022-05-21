@@ -1,7 +1,6 @@
 import os
-from buffer import Buffer
-from send_files import send_files
-# from observer import observer
+from utils.buffer import Buffer
+from utils.send_files import send_files
 
 BUFFER_SIZE = 4096
 

@@ -1,13 +1,23 @@
-from buffer import Buffer
+from utils.buffer import Buffer
 import os
 
 
 def send_files(client, files):
+    """
+    Sends a list of files in 'files' folder to the server.
+
+    Parameters
+    ----------
+    client : socket.socket
+        The client socket.
+    files : list
+        The list of files to send.
+    """
+
     client_buffer = Buffer(client)
     for file in files:
         client_buffer.put_utf8(file)
         file_name = os.path.join('files', file)
-
         # get the file size
         file_size = os.path.getsize(file_name)
 
