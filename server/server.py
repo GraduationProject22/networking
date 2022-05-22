@@ -1,4 +1,3 @@
-from multiprocessing import connection
 import os
 import socket
 import threading
@@ -21,8 +20,6 @@ except FileExistsError:
 
 
 def start():
-    # print(max(["files/" + file for file in os.listdir("files")],
-    #       key=os.path.getctime))
     serverObservable = Observable()
     server.listen()
     print(f"[LISTENING] Server is listening on {SERVER}:{PORT}")

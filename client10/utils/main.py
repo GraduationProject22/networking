@@ -1,5 +1,0 @@
-import generate_formatted_string_from_json_string from generate_formatted_string_from_json_string
-import read_file from read_file
-
-json_string = read_file("test.json")
-print(generate_formatted_string_from_json_string(json_string))
