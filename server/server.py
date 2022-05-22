@@ -5,9 +5,9 @@ from utils.handle_client import handle_client
 from utils.observable import Observable
 
 # Constants
-PORT = 5020
+PORT = 5040
 SERVER = socket.gethostbyname(socket.gethostname())
-ADDRESS = (SERVER, PORT)
+ADDRESS = ('192.168.1.5', PORT)
 FORMAT = 'utf-8'
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

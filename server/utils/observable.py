@@ -12,7 +12,8 @@ class Observable:
     def unsubscribe(self, subscriber):
         self.subscribers.remove(subscriber)
 
-    def notify(self, new_state=None):
+    def notify(self, new_state=None, file_ip=""):
         self.state = new_state
         for subscriber in self.subscribers:
-            send_files(subscriber, [self.state])
+            if (file_ip != subscriber[1]):
+                send_files(subscriber[0], [self.state])
