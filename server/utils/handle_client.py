@@ -1,4 +1,6 @@
+import json
 import os
+from utils.read_file import read_file
 from utils.buffer import Buffer
 from utils.send_files import send_files
 
@@ -8,7 +10,7 @@ BUFFER_SIZE = 4096
 def handle_client(conn, addr, serverObservable):
     print(f"[NEW CONNECTION] {addr} connected.")
     connection_buffer = Buffer(conn)
-    serverObservable.subscribe(conn)
+    serverObservable.subscribe([conn, addr[0]])
     while True:
         file_name = connection_buffer.get_utf8()
         if not file_name:
@@ -30,7 +32,9 @@ def handle_client(conn, addr, serverObservable):
                 print('File incomplete.  Missing', remaining, 'bytes.')
             else:
                 print('File received successfully.')
-        serverObservable.notify(file_name)
+        file_ip = json.loads(read_file(full_file_name))["ip"]
+
+        serverObservable.notify(file_name, file_ip)
     serverObservable.unsubscribe(conn)
     print('Connection closed.')
     conn.close()
