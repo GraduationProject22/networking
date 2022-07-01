@@ -38,9 +38,10 @@ def server_handler():
         receive_from_server(client_buffer)
 
 
-p1 = Process(target=uart_handler)
-p1.start()
-p2 = Process(target=server_handler)
-p2.start()
-p1.join()
-p2.join()
+if __name__ == "__main__":
+    p1 = Process(target=uart_handler)
+    p1.start()
+    p2 = Process(target=server_handler)
+    p2.start()
+    p1.join()
+    p2.join()
