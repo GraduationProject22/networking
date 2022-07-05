@@ -10,8 +10,8 @@ from utils.get_ip_address import get_ip_address
 
 
 HEADER = 64
-PORT = 5020
-SERVER = "192.168.1.9"
+PORT = 5030
+SERVER = "192.168.1.5"
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 

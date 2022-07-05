@@ -10,7 +10,7 @@ class Buffer:
            Return remaining buffer if <n bytes remain and socket closes.
         '''
         while len(self.buffer) < n:
-            data = self.sock.recv(1024)
+
             if not data:
                 data = self.buffer
                 self.buffer = b''
