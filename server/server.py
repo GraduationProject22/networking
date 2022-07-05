@@ -3,11 +3,12 @@ import socket
 import threading
 from utils.handle_client import handle_client
 from utils.observable import Observable
+from utils.get_ip_address import get_ip_address
 
 # Constants
-PORT = 5040
+PORT = 5050
 SERVER = socket.gethostbyname(socket.gethostname())
-ADDRESS = ('192.168.1.5', PORT)
+ADDRESS = (get_ip_address(), PORT)
 FORMAT = 'utf-8'
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
