@@ -1,11 +1,12 @@
 import os
+from utils.get_ip_address import get_ip_address
 
 BUFFER_SIZE = 4096
 
 
 def receive_from_server(client_buffer):
     file_name = client_buffer.get_utf8()
-    file_name = os.path.join('files', "file_receiving_client2.json")
+    file_name = os.path.join('received_files', file_name)
     file_size = int(client_buffer.get_utf8())
 
     with open(file_name, 'wb') as f:

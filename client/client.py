@@ -6,7 +6,7 @@ from utils.add_ip_address import add_ip_address
 from utils.receive_from_server import receive_from_server
 from utils.get_latest_file import get_latest_file
 from utils.receive_from_uart import receive_from_uart
-from utils.get_last_edit_time import get_last_edit_time
+from utils.get_ip_address import get_ip_address
 
 
 HEADER = 64
@@ -28,8 +28,9 @@ def uart_handler():
 
         receive_from_uart()
 
-        add_ip_address("files/" + "file_sending_client2.json")
-        send_files(client, ["file_sending_client2.json"])
+        print("Different file!")
+        add_ip_address("files_to_be_sent/" + get_ip_address() + ".json")
+        send_files(client, [get_ip_address() + ".json"])
 
 
 def server_handler():

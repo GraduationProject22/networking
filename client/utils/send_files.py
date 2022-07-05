@@ -17,7 +17,7 @@ def send_files(client, files):
     client_buffer = Buffer(client)
     for file in files:
         client_buffer.put_utf8(file)
-        file_name = os.path.join('files', file)
+        file_name = os.path.join('files_to_be_sent', file)
         # get the file size
         file_size = os.path.getsize(file_name)
 
