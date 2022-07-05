@@ -1,4 +1,5 @@
 import json
+import shutil
 import os
 from utils.read_file import read_file
 from utils.buffer import Buffer
@@ -33,7 +34,8 @@ def handle_client(conn, addr, serverObservable):
             else:
                 print('File received successfully.')
         file_ip = json.loads(read_file(full_file_name))["ip"]
-
+        shutil.copyfile(full_file_name, os.path.join(
+            'gui/files/', file_name))
         serverObservable.notify(file_name, file_ip)
     serverObservable.unsubscribe(conn)
     print('Connection closed.')

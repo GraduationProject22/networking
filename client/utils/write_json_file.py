@@ -1,4 +1,6 @@
 import json
+
+
 def write_json_file(file_name, formatted_string):
     """
     Writes a formatted string to a json file.
@@ -14,5 +16,7 @@ def write_json_file(file_name, formatted_string):
     for item in formatted_string.split("?"):
         if item[0] == "D":
             json_object["D"] = item.split(":")[1]
+        else:
+            json_object["W"] = item.split(":")[1]
     with open(file_name, 'w') as f:
         f.write(json.dumps(json_object))
