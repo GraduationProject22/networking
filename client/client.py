@@ -50,7 +50,7 @@ def uart_handler():
 
         # ! For testing
         sleep(2)
-        #create_dummy_json_file()
+        # create_dummy_json_file()
 
         new_latest_file = get_latest_file('files')
         new_latest_file_edit_time = get_last_edit_time(
