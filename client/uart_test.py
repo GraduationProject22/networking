@@ -1,7 +1,7 @@
-from generate_formatted_string_from_json_string import generate_formatted_string_from_json_string
-from read_file import read_file
-from write_json_file import write_json_file
-from receive_from_uart import receive_from_uart
+from utils.generate_formatted_string_from_json_string import generate_formatted_string_from_json_string
+from utils.write_json_file import write_json_file
+from utils.read_file import read_file
+from utils.receive_from_uart import receive_from_uart
 from time import sleep
 #s = read_file("test.json")
 # print(generate_formatted_string_from_json_string(s))

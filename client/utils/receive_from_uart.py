@@ -17,8 +17,8 @@ def receive_from_uart():
     RXSize = 100
     msgReceived = ''
 
-    if (len(listdir("received_files")) > 0):
-        msgSent = read_file(listdir("received_files")[0])
+    if (len(listdir("./received_files")) > 0):
+        msgSent = read_file(listdir("./received_files")[0])
         msgSent = generate_formatted_string_from_json_string(msgSent)
         print("msg sent:")
         print(msgSent)
@@ -31,7 +31,7 @@ def receive_from_uart():
         msgReceived.decode('utf-8')
         if(len(str(msgReceived)) > 3):
             print(str(msgReceived)[2:])
-            write_json_file("files_to_be_sent/" + get_ip_address() + ".json",
+            write_json_file("./files_to_be_sent/" + get_ip_address() + ".json",
                             str(msgReceived)[2:])
     except (UnicodeDecodeError, AttributeError):
         print("error")
