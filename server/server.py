@@ -15,6 +15,7 @@ FORMAT = 'utf-8'
 server_info_obj = {
     "port": PORT,
     "ip": SERVER,
+    "vehicles": 0
 }
 
 with open("./gui/files/server_info", 'w') as f:
